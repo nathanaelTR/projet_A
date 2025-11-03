@@ -1,2 +1,2 @@
 # projet_A
-Trouart Nathanael - Julien Soudan - Christian DJOMATIN AHO
+Trouart Nathanael - Julien Soudant - Christian DJOMATIN AHO
