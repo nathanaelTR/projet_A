@@ -53,6 +53,8 @@ Encore
     //     config.plugins.push('@babel/a-babel-plugin');
     // })
 
+    .enableSingleRuntimeChunk()
+
     // enables and configure @babel/preset-env polyfills
     .configureBabelPresetEnv((config) => {
         config.useBuiltIns = 'usage';
@@ -75,6 +77,7 @@ Encore
 
     // uncomment if you're having problems with a jQuery plugin
     //.autoProvidejQuery()
+    
     ;
 
 module.exports = Encore.getWebpackConfig();

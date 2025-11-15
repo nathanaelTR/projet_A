@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Audit Comptable{% endblock %}
+
+{% block body %}
+  <h1 class="text-3xl font-semibold text-gray-900 mb-6 text-center">Audit Comptable des Entreprises</h1>
+
+  <div class="flex justify-center mb-8">
+    <div class="relative w-full max-w-xl">
+      <input type="text" placeholder="Rechercher une entreprise" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg ">
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  {% set audits = [
+    {"entreprise": "Google", "score": 92, "statut": "Conforme", "date": "2025-10-12"},
+    {"entreprise": "Facebook", "score": 78, "statut": "À surveiller", "date": "2025-09-30"},
+    {"entreprise": "Youtube", "score": 85, "statut": "Conforme", "date": "2025-10-05"},
+    {"entreprise": "Instagram", "score": 67, "statut": "Non conforme", "date": "2025-08-22"},
+    {"entreprise": "Snapchat", "score": 88, "statut": "Conforme", "date": "2025-10-18"},
+    {"entreprise": "PME RANDOM", "score": 74, "statut": "À surveiller", "date": "2025-09-10"}
+  ] %}
+
+  {% for audit in audits %}
+    <div class="bg-white border rounded p-4">
+      <h2 class="text-lg font-semibold"> {{ audit.entreprise }} </h2>
+      <p class="text-sm"> Score : {{ audit.score }}%</p>
+      <p class="text-sm"> Statut : {{ audit.statut }}</p>
+      <p class="text-sm"> Date : {{ audit.date }}</p>
+    </div>
+  {% endfor %}
+</div>
+  
+{% endblock %}

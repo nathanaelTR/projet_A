@@ -1,18 +1,40 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+  <head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Dashboard{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 font-sans">
+    <!-- Sidebar fixe -->
+    <aside class="fixed top-0 left-0 h-screen w-64 bg-gray-800 text-white flex flex-col py-8 z-50">
+      <div class="flex justify-center mb-8">
+        <img src="https://img.icons8.com/?size=100&id=15263&format=png&color=000000" alt="User Icon" class="w-12 h-12 rounded-full">
+      </div>
+      <nav class="flex flex-col space-y-4 px-6">
+        <a href="{{ path('app_dashboard_entreprises') }}" class="flex items-center text-sm hover:text-gray-300 hover:bg-gray-700 py-2 px-4 rounded-lg transition duration-300">
+          <span class="mr-2">🏢</span> Entreprises
+        </a>
+        <a href="{{ path('app_dashboard_audit') }}" class="flex items-center text-sm hover:text-gray-300 hover:bg-gray-700 py-2 px-4 rounded-lg transition duration-300">
+          <span class="mr-2">📊</span> Audit
+        </a>
+        <a href="{{ path('app_dashboard_stats') }}" class="flex items-center text-sm hover:text-gray-300 hover:bg-gray-700 py-2 px-4 rounded-lg transition duration-300">
+          <span class="mr-2">📊</span> Statistiques
+        </a>
+        <a href="{{ path('app_dashboard_param') }}" class="flex items-center text-sm hover:text-gray-300 hover:bg-gray-700 py-2 px-4 rounded-lg transition duration-300">
+          <span class="mr-2">⚙️</span> Paramètres Entreprise
+        </a>
+        <a href="{{ path('app_dashboard_config') }}" class="flex items-center text-sm hover:text-gray-300 hover:bg-gray-700 py-2 px-4 rounded-lg transition duration-300">
+          <span class="mr-2">🔧</span> Config
+        </a>
+      </nav>
+    </aside>
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    <!-- Contenu principal -->
+    <main class="ml-64 p-8">
+      {% block body %}
+        <h1>Contenu principal ici</h1>
+      {% endblock %}
+    </main>
+  </body>
 </html>
