@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Analyse Financière - Vue Comptable{% endblock %}
+
+{% block body %}
+  <h1 class="text-3xl font-semibold text-gray-900 mb-6 text-center">Analyse Financière - Vue Comptable</h1>
+
+  <div class="bg-white rounded shadow p-6 mb-8">
+    <h2 class="text-xl font-bold text-gray-800 mb-4">Bilan Financier</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <h3 class="text-lg font-semibold text-gray-700 mb-2">Actif</h3>
+        <ul class="text-sm text-gray-600 space-y-1">
+          <li>Actif Immobilisé : <span class="font-semibold">800 000 €</span></li>
+          <li>Actif Circulant : <span class="font-semibold">700 000 €</span></li>
+          <li class="mt-2 font-bold text-gray-800">Total Actif : 1 500 000 €</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold text-gray-700 mb-2">Passif</h3>
+        <ul class="text-sm text-gray-600 space-y-1">
+          <li>Capitaux Propres : <span class="font-semibold">900 000 €</span></li>
+          <li>Dettes : <span class="font-semibold">600 000 €</span></li>
+          <li class="mt-2 font-bold text-gray-800">Total Passif : 1 500 000 €</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded shadow p-6 mb-8">
+    <h2 class="text-xl font-bold text-gray-800 mb-4">Ratios Clés</h2>
+    <ul class="text-sm text-gray-600 space-y-2">
+      <li>Fonds de roulement : <span class="font-semibold text-green-600">1.8</span> <span class="text-xs text-gray-500">(Fort)</span></li>
+      <li>Ratio d'endettement : <span class="font-semibold text-yellow-600">0.4</span> <span class="text-xs text-gray-500">(Modéré)</span></li>
+    </ul>
+  </div>
+
+  <div class="bg-white rounded shadow p-6 mb-8">
+    <h2 class="text-xl font-bold text-gray-800 mb-4">Compte de Résultat</h2>
+    <ul class="text-sm text-gray-600 space-y-1">
+      <li>Produits d'exploitation : <span class="font-semibold">403 200 €</span></li>
+      <li>Charges d'exploitation : <span class="font-semibold text-red-600">217 000 €</span></li>
+      <li>Résultat d'exploitation : <span class="font-semibold text-green-600">186 200 €</span></li>
+      <li>Résultat financier : <span class="font-semibold text-red-600">-5 000 €</span></li>
+      <li>Résultat exceptionnel : <span class="font-semibold text-green-600">12 000 €</span></li>
+      <li class="mt-2 font-bold text-indigo-600">Résultat Net : 193 200 €</li>
+    </ul>
+    <div class="mt-4 text-sm text-gray-500">
+      <p>Chiffre d'affaires : <span class="text-green-600 font-semibold">+15.2%</span></p>
+      <p>Charges d'exploitation : <span class="text-red-600 font-semibold">+8.5%</span></p>
+    </div>
+  </div>
+
+  <div class="flex justify-center mt-8">
+    <button class="bg-blue-600 text-white px-6 py-2 rounded-lg shadow hover:bg-blue-700 transition">
+      📤 Exporter les statistiques
+    </button>
+  </div>
+{% endblock %}

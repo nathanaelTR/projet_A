@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des Utilisateurs{% endblock %}
+
+{% block body %}
+  <h1 class="text-3xl font-semibold text-gray-900 mb-6 text-center">Gestion des Utilisateurs</h1>
+
+  <div class="flex flex-col mb-6 gap-4">
+    <div class="flex-1">
+      <input type="text" placeholder="Recherche d'utilisateur" class="w-full border border-gray-300 rounded-lg px-4 py-2">
+    </div>
+    <div class="flex gap-4">
+      <select class="border border-gray-300 rounded-lg px-3 py-2 text-sm">
+        <option>Rôle</option>
+        <option>Admin</option>
+        <option>Comptable</option>
+        <option>Gérant</option>
+      </select>
+      <select class="border border-gray-300 rounded-lg px-3 py-2 text-sm">
+        <option>Statut</option>
+        <option>Actif</option>
+        <option>Inactif</option>
+      </select>
+      <select class="border border-gray-300 rounded-lg px-3 py-2 text-sm">
+        <option>Entreprise</option>
+        <option>Client A</option>
+        <option>Google</option>
+        <option>Facebook</option>
+        <option>Snapchat</option>
+      </select>
+    </div>
+    <div>
+      <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg">
+        + Ajouter un utilisateur
+      </button>
+    </div>
+  </div>
+
+  <div class="overflow-x-auto">
+    <table class="min-w-full bg-white rounded-lg shadow">
+      <thead class="bg-gray-100 text-gray-700 text-sm uppercase">
+        <tr>
+          <th class="px-4 py-3 text-left">Nom</th>
+          <th class="px-4 py-3 text-left">Email</th>
+          <th class="px-4 py-3 text-left">Rôle</th>
+          <th class="px-4 py-3 text-left">Entreprise(s)</th>
+          <th class="px-4 py-3 text-left">Statut</th>
+          <th class="px-4 py-3 text-left">Dernière Connexion</th>
+          <th class="px-4 py-3 text-left">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="text-sm text-gray-700">
+        {% for user in [
+          {'nom':'Jean Dupont','email':'jean.dupont@clienta.com','role':'Admin','entreprise':'Client A','statut':'Actif','statutClass':'text-green-600','connexion':'2023-10-26 10:00'},
+          {'nom':'Marie Curie','email':'marie.curie@clientb.com','role':'Comptable','entreprise':'Google','statut':'Actif','statutClass':'text-green-600','connexion':'2023-10-26 09:45'},
+          {'nom':'Pierre Martin','email':'pierre.martin@clienta.com','role':'Gérant','entreprise':'Facebook','statut':'Inactif','statutClass':'text-red-600','connexion':'2023-09-15 11:20'},
+          {'nom':'Sophie Dubois','email':'sophie.dubois@clientc.com','role':'Comptable','entreprise':'Snapchat','statut':'Actif','statutClass':'text-green-600','connexion':'2023-10-25 16:30'},
+          {'nom':'Luc Bernard','email':'luc.bernard@clientb.com','role':'Gérant','entreprise':'Google','statut':'Actif','statutClass':'text-green-600','connexion':'2023-10-26 08:15'}
+        ] %}
+        <tr class="border-t">
+          <td class="px-4 py-3">{{ user.nom }}</td>
+          <td class="px-4 py-3">{{ user.email }}</td>
+          <td class="px-4 py-3">{{ user.role }}</td>
+          <td class="px-4 py-3">{{ user.entreprise }}</td>
+          <td class="px-4 py-3 {{ user.statutClass }}">{{ user.statut }}</td>
+          <td class="px-4 py-3">{{ user.connexion }}</td>
+          <td class="px-4 py-3">
+            <div class="flex gap-2">
+              <button class="bg-indigo-600 text-white px-3 py-1 rounded text-xs hover:bg-indigo-700">
+                Modifier
+              </button>
+              <button class="bg-red-600 text-white px-3 py-1 rounded text-xs hover:bg-red-700">
+                Supprimer
+              </button>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

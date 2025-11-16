@@ -1,0 +1,148 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Ventes / Clients - La Gestion des Créances
+{% endblock %}
+
+{% block body %}
+    <h1 class="text-3xl font-semibold text-gray-900 mb-6 text-center">
+        Ventes / Clients - La Gestion des Créances
+    </h1>
+
+    <div class="bg-white rounded shadow p-6 mb-10">
+        <h2 class="text-xl font-bold text-gray-800 mb-4">
+            Créances en cours
+        </h2>
+
+        {% set creances = [
+            {
+                'client': 'Julien',
+                'ref': 'Facture - 3654945',
+                'echeance': '6 Nov 2025',
+                'retard': '29 jours',
+                'montant': '4 500 €',
+                'relance': 'Relance Manuelle Urgent',
+                'action': ['Appeler Client/Envoyer Email personnalisé','Voir Facture']
+            },
+            {
+                'client': 'Christian',
+                'ref': 'Facture - 2819025',
+                'echeance': '10 Jul 2025',
+                'retard': '13 jours',
+                'montant': '4 000 €',
+                'relance': 'Automatique (Email 2)',
+                'action': ['Voir Facture']
+            },
+            {
+                'client': 'Nathanael',
+                'ref': 'Facture - 2084015',
+                'echeance': '19 Oct 2025',
+                'retard': 'N/A',
+                'montant': '9 800 €',
+                'relance': 'En Attente',
+                'action': ['Lancer Relance Auto','Voir Facture']
+            }
+        ] %}
+
+        <table class="min-w-full text-sm text-left">
+            <thead class="bg-gray-100 text-gray-600 uppercase">
+                <tr>
+                    <th class="px-4 py-2">Client</th>
+                    <th class="px-4 py-2">Facture</th>
+                    <th class="px-4 py-2">Échéance</th>
+                    <th class="px-4 py-2">Retard (Jours)</th>
+                    <th class="px-4 py-2">Montant</th>
+                    <th class="px-4 py-2">Niveau de Relance</th>
+                    <th class="px-4 py-2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for f in creances %}
+                    <tr class="border-t">
+                        <td class="px-4 py-2">{{ f.client }}</td>
+                        <td class="px-4 py-2">{{ f.ref }}</td>
+                        <td class="px-4 py-2">{{ f.echeance }}</td>
+                        <td class="px-4 py-2">{{ f.retard }}</td>
+                        <td class="px-4 py-2">{{ f.montant }}</td>
+                        <td class="px-4 py-2 font-semibold text-indigo-600">{{ f.relance }}</td>
+                        <td class="px-4 py-2">
+                            <div class="flex gap-2 flex-wrap">
+                                {% for a in f.action %}
+                                    {% set btn_class = 'bg-indigo-600 hover:bg-indigo-700' %}
+                                    {% if a == 'Appeler Client/Envoyer Email personnalisé' %}
+                                        {% set btn_class = 'bg-red-600 hover:bg-red-700' %}
+                                    {% elseif a == 'Envoyer Email personnalisé' %}
+                                        {% set btn_class = 'bg-blue-600 hover:bg-blue-700' %}
+                                    {% elseif a == 'Lancer Relance Auto' %}
+                                        {% set btn_class = 'bg-purple-600 hover:bg-purple-700' %}
+                                    {% endif %}
+                                    <button class="{{ btn_class }} text-white px-3 py-1 rounded text-xs">{{ a }}</button>
+                                {% endfor %}
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="bg-white rounded shadow p-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-4">
+            Ventes / Clients - Historique
+        </h2>
+
+        {% set historique = [
+            {
+                'client': 'Julien',
+                'ref': 'Facture - 10008801',
+                'date': '15 Oct 2024',
+                'montant': '2 500 €',
+                'statut': 'Payé'
+            },
+            {
+                'client': 'Client A',
+                'ref': 'Facture - 10008802',
+                'date': '12 Oct 2024',
+                'montant': '1 200 €',
+                'statut': 'Payé'
+            },
+            {
+                'client': 'Nathanael',
+                'ref': 'Facture - 10008803',
+                'date': '10 Oct 2024',
+                'montant': '5 000 €',
+                'statut': 'Payé'
+            }
+            
+        ] %}
+
+        <table class="min-w-full text-sm text-left">
+            <thead class="bg-gray-100 text-gray-600 uppercase">
+                <tr>
+                    <th class="px-4 py-2">Client</th>
+                    <th class="px-4 py-2">Facture</th>
+                    <th class="px-4 py-2">Date</th>
+                    <th class="px-4 py-2">Montant</th>
+                    <th class="px-4 py-2">Statut</th>
+                    <th class="px-4 py-2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for f in historique %}
+                    <tr class="border-t">
+                        <td class="px-4 py-2">{{ f.client }}</td>
+                        <td class="px-4 py-2">{{ f.ref }}</td>
+                        <td class="px-4 py-2">{{ f.date }}</td>
+                        <td class="px-4 py-2">{{ f.montant }}</td>
+                        <td class="px-4 py-2 text-green-600 font-semibold">{{ f.statut }}</td>
+                        <td class="px-4 py-2">
+                            <button class="bg-indigo-600 text-white px-3 py-1 rounded text-xs hover:bg-indigo-700">
+                                Voir Facture
+                            </button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
