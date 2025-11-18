@@ -13,40 +13,19 @@ class LoginFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        $usersData = [
-            [
-                'email' => 'admin@example.com',
-                'role'  => 'ROLE_ADMIN'
-            ],
-            [
-                'email' => 'gerant1@example.com',
-                'role'  => 'ROLE_GERANT'
-            ],
-            [
-                'email' => 'gerant2@example.com',
-                'role'  => 'ROLE_GERANT'
-            ],
-            [
-                'email' => 'collab1@example.com',
-                'role'  => 'ROLE_COLLABORATEUR'
-            ],
-            [
-                'email' => 'collab2@example.com',
-                'role'  => 'ROLE_COLLABORATEUR'
-            ],
-            [
-                'email' => 'collab3@example.com',
-                'role'  => 'ROLE_COLLABORATEUR'
-            ],
-        ];
+        $roles = ['ROLE_ADMIN', 'ROLE_GERANT', 'ROLE_COLLABORATEUR'];
 
-        foreach ($usersData as $data) {
+        for ($i = 1; $i <= 120; $i++) {
             $user = new User();
-            $user->setEmail($data['email']);
+
+            $user->setEmail("user{$i}@example.com");
             $user->setPassword($this->passwordHasher->hashPassword($user, 'password123'));
-            $user->setNom("test");
-            $user->setPrenom("test");
-            $user->setRoles([$data['role']]);
+
+            $user->setNom("Nom{$i}");
+            $user->setPrenom("Prenom{$i}");
+
+            $user->setRoles([$roles[array_rand($roles)]]);
+
             $user->setGoogleAuthenticatorSecret(null);
 
             $manager->persist($user);
