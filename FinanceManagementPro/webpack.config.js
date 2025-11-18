@@ -55,11 +55,7 @@ Encore
 
     .enableSingleRuntimeChunk()
 
-<<<<<<< HEAD
     // enables and configure @babel/preset-env polyfills
-=======
-    // // enables and configure @babel/preset-env polyfills
->>>>>>> front-dev
     // .configureBabelPresetEnv((config) => {
     //     config.useBuiltIns = 'usage';
     //     config.corejs = '3.38';

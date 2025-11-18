@@ -13,15 +13,45 @@ class LoginFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        $user = new User();
-        $user->setEmail('nathanael.trt@outlook.fr');
-        $user->setPassword($this->passwordHasher->hashPassword($user, 'password123'));
-        $user->setNom("test");
-        $user->setPrenom("test");
-        $user->setRoles(["ROLE_ADMIN"]);
-        $user->setGoogleAuthenticatorSecret(null);
+        $usersData = [
+            [
+                'email' => 'admin@example.com',
+                'role'  => 'ROLE_ADMIN'
+            ],
+            [
+                'email' => 'gerant1@example.com',
+                'role'  => 'ROLE_GERANT'
+            ],
+            [
+                'email' => 'gerant2@example.com',
+                'role'  => 'ROLE_GERANT'
+            ],
+            [
+                'email' => 'collab1@example.com',
+                'role'  => 'ROLE_COLLABORATEUR'
+            ],
+            [
+                'email' => 'collab2@example.com',
+                'role'  => 'ROLE_COLLABORATEUR'
+            ],
+            [
+                'email' => 'collab3@example.com',
+                'role'  => 'ROLE_COLLABORATEUR'
+            ],
+        ];
 
-        $manager->persist($user);
+        foreach ($usersData as $data) {
+            $user = new User();
+            $user->setEmail($data['email']);
+            $user->setPassword($this->passwordHasher->hashPassword($user, 'password123'));
+            $user->setNom("test");
+            $user->setPrenom("test");
+            $user->setRoles([$data['role']]);
+            $user->setGoogleAuthenticatorSecret(null);
+
+            $manager->persist($user);
+        }
+
         $manager->flush();
     }
 }
