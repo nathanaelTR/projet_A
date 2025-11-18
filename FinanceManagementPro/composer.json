@@ -11,6 +11,9 @@
         "doctrine/doctrine-bundle": "^2.18",
         "doctrine/doctrine-migrations-bundle": "^3.5",
         "doctrine/orm": "^3.5",
+        "endroid/qr-code": "^6.0",
+        "scheb/2fa-bundle": "^7.11",
+        "scheb/2fa-google-authenticator": "^7.11",
         "symfony/console": "7.3.*",
         "symfony/dotenv": "7.3.*",
         "symfony/flex": "^2",
@@ -76,6 +79,9 @@
         }
     },
     "require-dev": {
-        "symfony/maker-bundle": "^1.64"
+        "doctrine/doctrine-fixtures-bundle": "^4.3",
+        "symfony/maker-bundle": "^1.64",
+        "symfony/stopwatch": "7.3.*",
+        "symfony/web-profiler-bundle": "7.3.*"
     }
 }
