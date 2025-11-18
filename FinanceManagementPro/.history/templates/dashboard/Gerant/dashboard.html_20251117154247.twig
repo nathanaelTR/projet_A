@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard - Gérant{% endblock %}
+
+{% block body %}
+  <h1 class="text-3xl font-semibold text-gray-900 mb-6 text-center">Tableau de Bord - Vue Gérant</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+    <div class="bg-white rounded shadow p-6 text-center">
+      <h2 class="text-sm text-gray-500">Chiffre d'affaires</h2>
+      <p class="text-2xl font-bold text-green-600">€120 500</p>
+      <p class="text-xs text-green-500">+12% vs mois dernier</p>
+    </div>
+    <div class="bg-white rounded shadow p-6 text-center">
+      <h2 class="text-sm text-gray-500">Dépenses</h2>
+      <p class="text-2xl font-bold text-red-600">€45 200</p>
+      <p class="text-xs text-red-500">+5% vs mois dernier</p>
+    </div>
+    <div class="bg-white rounded shadow p-6 text-center">
+      <h2 class="text-sm text-gray-500">Résultat Net</h2>
+      <p class="text-2xl font-bold text-indigo-600">€75 300</p>
+      <p class="text-xs text-green-500">+8% vs mois dernier</p>
+    </div>
+  </div>
+
+  <div class="flex flex-wrap justify-center gap-4 mb-8">
+    <button class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 text-sm">Nouvelle Facture</button>
+    <button class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 text-sm">Nouveau Devis</button>
+    <button class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 text-sm">Ajouter un Client</button>
+    <button class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 text-sm">Ajouter un Fournisseur</button>
+  </div>
+
+  <div class="bg-white rounded shadow p-6 mb-8">
+    <h2 class="text-xl font-bold text-gray-800 mb-4">Dernières Transactions</h2>
+    <div class="overflow-x-auto">
+      <table class="min-w-full text-sm text-left">
+        <thead class="bg-gray-100 text-gray-600 uppercase">
+          <tr>
+            <th class="px-4 py-2">Date</th>
+            <th class="px-4 py-2">Type</th>
+            <th class="px-4 py-2">Montant</th>
+            <th class="px-4 py-2">Statut</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-t">
+            <td class="px-4 py-2">15 Nov 2025</td>
+            <td class="px-4 py-2">Facture Client</td>
+            <td class="px-4 py-2 text-green-600">€2 500</td>
+            <td class="px-4 py-2"><span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Payé</span></td>
+          </tr>
+          <tr class="border-t">
+            <td class="px-4 py-2">12 Nov 2025</td>
+            <td class="px-4 py-2">Achat Fournisseur</td>
+            <td class="px-4 py-2 text-red-600">€1 200</td>
+            <td class="px-4 py-2"><span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-xs">En attente</span></td>
+          </tr>
+          <tr class="border-t">
+            <td class="px-4 py-2">10 Nov 2025</td>
+            <td class="px-4 py-2">Devis</td>
+            <td class="px-4 py-2">€850</td>
+            <td class="px-4 py-2"><span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Envoyé</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+
+    <div class="bg-white rounded shadow p-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-4">Évolution Mensuelle</h2>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            
+            <canvas id="BarChart" 
+            width="380" 
+            height="180">
+            </canvas>
+
+            <script>
+
+                let data = {
+                    labels: ['Janvier', 'Février',
+                            'Mars', 'Avril', 
+                            'Mai','Juin',
+                            'Juillet','Aout',
+                            'Septembre','Octobre',
+                            'Novembre','Décembre'],
+                    datasets: [{
+                        label: 'CA',
+                        data: [12, 17, 3, 8, 2,7,9,7,2,5,7,18],
+                        backgroundColor: 'rgba(19, 128, 236, 1)',
+                        borderColor: 'rgba(150, 100, 255, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Dépenses',
+                        data: [6, 7, 5, 7, 4,13,9,8,2,7,6,12],
+                        backgroundColor: 'rgba(91, 236, 219, 1)',
+                        borderColor: 'rgba(150, 100, 255, 1)',
+                        borderWidth: 1
+                    }]
+                };
+
+                let options = {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                };
+
+                let ctx = document.getElementById('BarChart').getContext('2d');
+
+                let myBarChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: data,
+                    options: options
+                });
+            </script>
+
+    </div>
+
+{% endblock %}

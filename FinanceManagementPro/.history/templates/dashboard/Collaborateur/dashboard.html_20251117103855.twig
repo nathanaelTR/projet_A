@@ -1,0 +1,114 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+  <h1 class="text-3xl font-semibold text-gray-900 mb-6 text-center">Tableau de Bord</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+    <div class="bg-white rounded shadow p-6 text-center">
+      <h2 class="text-sm text-gray-500">Factures à traiter</h2>
+      <p class="text-2xl font-bold text-indigo-600">12</p>
+    </div>
+    <div class="bg-white rounded shadow p-6 text-center">
+      <h2 class="text-sm text-gray-500">Devis en attente</h2>
+      <p class="text-2xl font-bold text-yellow-600">5</p>
+    </div>
+    <div class="bg-white rounded shadow p-6 text-center">
+      <h2 class="text-sm text-gray-500">Clients suivis</h2>
+      <p class="text-2xl font-bold text-green-600">8</p>
+    </div>
+  </div>
+
+  <div class="flex flex-wrap justify-center gap-4 mb-8">
+    <button class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 text-sm">Créer une Facture</button>
+    <button class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 text-sm">Créer un Devis</button>
+    <button class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 text-sm">Ajouter un Client</button>
+  </div>
+
+  <div class="bg-white rounded shadow p-6 mb-8">
+    <h2 class="text-xl font-bold text-gray-800 mb-4">Derniers Documents</h2>
+    <div class="overflow-x-auto">
+      <table class="min-w-full text-sm text-left">
+        <thead class="bg-gray-100 text-gray-600 uppercase">
+          <tr>
+            <th class="px-4 py-2">Date</th>
+            <th class="px-4 py-2">Type</th>
+            <th class="px-4 py-2">Client</th>
+            <th class="px-4 py-2">Montant</th>
+            <th class="px-4 py-2">Statut</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-t">
+            <td class="px-4 py-2">15 Nov 2025</td>
+            <td class="px-4 py-2">Facture</td>
+            <td class="px-4 py-2">Decathlon</td>
+            <td class="px-4 py-2">€223,41</td>
+            <td class="px-4 py-2"><span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Payé</span></td>
+          </tr>
+          <tr class="border-t">
+            <td class="px-4 py-2">12 Nov 2025</td>
+            <td class="px-4 py-2">Devis</td>
+            <td class="px-4 py-2">Picard</td>
+            <td class="px-4 py-2">€84</td>
+            <td class="px-4 py-2"><span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Envoyé</span></td>
+          </tr>
+          <tr class="border-t">
+            <td class="px-4 py-2">10 Nov 2025</td>
+            <td class="px-4 py-2">Facture</td>
+            <td class="px-4 py-2">Orange</td>
+            <td class="px-4 py-2">€150,28</td>
+            <td class="px-4 py-2"><span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-xs">En attente</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js">
+    </script>
+    <canvas id="myBarChart" 
+            width="380" 
+            height="180">
+    </canvas>
+
+    <script>
+
+        // data sample for the chart
+        let data = {
+            labels: ['Label 1', 'Label 2',
+                     'Label 3', 'Label 4', 
+                     'Label 5'],
+            datasets: [{
+                label: 'Sample Bar Chart',
+                data: [12, 17, 3, 8, 2],
+                backgroundColor: 'rgba(70, 192, 192, 0.6)',
+                borderColor: 'rgba(150, 100, 255, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        // Configuration options for the chart
+        let options = {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        };
+
+        // Get the canvas element
+        let ctx = document.getElementById('myBarChart')
+            .getContext('2d');
+
+        // Create the bar chart
+        let myBarChart = new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: options
+        });
+    </script>
+
+
+{% endblock %}

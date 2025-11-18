@@ -1,0 +1,144 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Statistiques{% endblock %}
+
+{% block body %}
+  <h1 class="text-3xl font-semibold text-gray-900 mb-6">Statistiques</h1>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+    <div class="bg-white shadow rounded-lg p-6 text-center">
+      <h2 class="text-xl font-bold text-gray-800">Saisie Ã©critures</h2>
+      <p class="text-3xl text-indigo-600 font-semibold mt-2">264</p>
+    </div>
+    <div class="bg-white shadow rounded-lg p-6 text-center">
+      <h2 class="text-xl font-bold text-gray-800">Devis</h2>
+      <p class="text-3xl text-indigo-600 font-semibold mt-2">40</p>
+    </div>
+    <div class="bg-white shadow rounded-lg p-6 text-center">
+      <h2 class="text-xl font-bold text-gray-800">Relance automatique</h2>
+      <p class="text-3xl text-indigo-600 font-semibold mt-2">97</p>
+    </div>
+    <div class="bg-white shadow rounded-lg p-6 text-center">
+      <h2 class="text-xl font-bold text-gray-800">Alertes TrÃ©sorerie</h2>
+      <p class="text-3xl text-indigo-600 font-semibold mt-2">80</p>
+    </div>
+    <div class="bg-white shadow rounded-lg p-6 text-center">
+      <h2 class="text-xl font-bold text-gray-800">Bilan automatique</h2>
+      <p class="text-3xl text-indigo-600 font-semibold mt-2">48</p>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="bg-white shadow rounded-lg p-6">
+      <h3 class="text-lg font-semibold text-gray-700 mb-4">RÃ©partition des DÃ©penses</h3>
+
+      <canvas id="DonutDepense" width="380" height="180"></canvas>
+
+      <script>
+          var ctx = document.getElementById('DonutDepense').getContext('2d');
+
+          let data = {
+              labels: ['January', 'February', 'March', 'April', 'May'],
+              datasets: [{
+                data: [50, 60, 70, 180, 190],
+              }],
+          };
+:saluting_face:
+Clique pour réagir
+:thumbsup:
+Clique pour réagir
+:white_check_mark:
+Clique pour réagir
+Ajouter une réaction
+Modifier
+Transférer
+Plus
+[16:15]lundi 17 novembre 2025 16:15
+let options = {
+              plugins: {
+                datalabels: {
+                  display: true,
+                  backgroundColor: '#ccc',
+                  borderRadius: 3,
+                  font: {
+                    color: 'red',
+                    weight: 'bold',
+                  },
+                },
+                doughnutlabel: {
+                  labels: [
+                    {
+                      text: '550',
+                      font: {
+                        size: 20,
+                        weight: 'bold',
+                      },
+                    },
+                    {
+                      text: 'total',
+                    },
+                  ],
+                },
+              },
+          };
+
+          var myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: data,
+            options: options
+          });
+        </script>
+    </div>
+
+
+    <div class="bg-white shadow rounded-lg p-6">
+      <h3 class="text-lg font-semibold text-gray-700 mb-4">RÃ©partition des DÃ©penses</h3>
+
+      <canvas id="DonutChart" width="380" height="180"></canvas>
+
+      <script>
+          var ctx = document.getElementById('DonutChart').getContext('2d');
+
+          let data = {
+              labels: ['January', 'February', 'March', 'April', 'May'],
+              datasets: [{
+                data: [50, 60, 70, 180, 190],
+              }],
+          };
+
+          let options = {
+              plugins: {
+                datalabels: {
+                  display: true,
+                  backgroundColor: '#ccc',
+                  borderRadius: 3,
+                  font: {
+                    color: 'red',
+                    weight: 'bold',
+                  },
+                },
+                doughnutlabel: {
+                  labels: [
+                    {
+                      text: '550',
+                      font: {
+                        size: 20,
+                        weight: 'bold',
+                    },
+                    {
+                      text: 'total',
+                    },
+                  }],
+                },
+              },
+          };
+
+          var myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: data,
+            options: options
+          });
+        </script>
+    </div>
+  </div>
+{% endblock %}
