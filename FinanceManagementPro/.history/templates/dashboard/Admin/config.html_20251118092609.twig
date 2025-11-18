@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Configuration{% endblock %}
+
+{% block body %}
+  <h1 class="text-3xl font-semibold text-gray-900 mb-6 text-center">Configuration</h1>
+
+  <div class="flex justify-center mb-8">
+    <div class="relative w-full max-w-xl">
+      <input type="text" placeholder="Recherche param" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none">
+    </div>
+  </div>
+
+  <ul class="space-y-4">
+    <li class="bg-white shadow rounded-lg p-4 ">
+      <h2 class="text-lg font-semibold text-gray-800">Configuration table de données Users</h2>
+      <p class="text-sm text-gray-500">Gérer les colonnes et permissions utilisateurs</p>
+    </li>
+    <li class="bg-white shadow rounded-lg p-4 ">
+      <h2 class="text-lg font-semibold text-gray-800">Configuration facturation</h2>
+      <p class="text-sm text-gray-500">Paramètres liés aux devis et factures</p>
+    </li>
+    <li class="bg-white shadow rounded-lg p-4 ">
+      <h2 class="text-lg font-semibold text-gray-800">Configuration 1</h2>
+      <p class="text-sm text-gray-500">Configuration des datas</p>
+    </li>
+    <li class="bg-white shadow rounded-lg p-4 ">
+      <h2 class="text-lg font-semibold text-gray-800">Config n2</h2>
+      <p class="text-sm text-gray-500">Option personnalisée 2</p>
+    </li>
+    <li class="bg-white shadow rounded-lg p-4 ">
+      <h2 class="text-lg font-semibold text-gray-800">Config n3</h2>
+      <p class="text-sm text-gray-500">Option personnalisée 3</p>
+    </li>
+    <li class="bg-white shadow rounded-lg p-4 ">
+      <h2 class="text-lg font-semibold text-gray-800">Config 4</h2>
+      <p class="text-sm text-gray-500">Je sais pas quoi mettre mdr</p>
+    </li>
+  </ul>
+{% endblock %}
