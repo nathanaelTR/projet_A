@@ -29,9 +29,9 @@ DATABASE_URL="mysql://root:Xerneas@172.16.0.1:3306/app?serverVersion=8.0.32&char
 - main Branche du Projet
 
 ## Groupe 
-Julien = Développeur FrontEnd - Concepteur Supprot du Prototype Figma
-Nathanael = Développeur BackEnd - Chef de Projet
-Christian = Concepteur du Prototype Figma - Concepteur du Proof of concept 
+- Julien = Développeur FrontEnd - Concepteur Supprot du Prototype Figma
+- Nathanael = Développeur BackEnd - Chef de Projet
+- Christian = Concepteur du Prototype Figma - Concepteur du Proof of concept 
 
 ## Technologie utilisé 
 Symfony 7.X
